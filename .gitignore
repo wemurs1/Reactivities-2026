@@ -482,3 +482,5 @@ $RECYCLE.BIN/
 *.swp
 API/appsettings.json
 API/Reactivities.db
+API/Reactivities.db-shm
+API/Reactivities.db-wal
