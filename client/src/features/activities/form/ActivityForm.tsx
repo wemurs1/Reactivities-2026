@@ -1,7 +1,7 @@
 import { Box, Button, Paper, Typography } from '@mui/material';
 import { useActivities } from '../../../lib/hooks/useActivities';
 import { useNavigate, useParams } from 'react-router';
-import { useForm } from 'react-hook-form';
+import { useForm, type FieldValues } from 'react-hook-form';
 import { useEffect } from 'react';
 import { activitySchema, type ActivitySchema } from '../../../lib/schemas/activitySchema';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -32,7 +32,7 @@ export default function ActivityForm() {
         });
     }, [activity, reset]);
 
-    const onSubmit = async (data: ActivitySchema) => {
+    const onSubmit = async (data: FieldValues) => {
         const { location, ...rest } = data;
         const flattenedData = { ...rest, ...location };
         try {
