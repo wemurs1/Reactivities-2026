@@ -19,6 +19,7 @@
     <Folder Include="DTOs/" />
     <Folder Include="Middleware/" />
     <Folder Include="SignalR/" />
+    <Folder Include="wwwroot/" />
   </ItemGroup>
 
 </Project>
