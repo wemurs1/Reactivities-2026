@@ -57,7 +57,7 @@ public class AccountController(SignInManager<User> signInManager, IEmailSender<U
         if (user == null) return BadRequest("Failed to read user from GitHub");
 
         // step 3 - getting the email if needed
-        if (string.IsNullOrEmpty(user?.Email))
+        if (string.IsNullOrEmpty(user.Email))
         {
             var emailResponse = await httpClient.GetAsync("https://api.github.com/user/emails");
             if (emailResponse.IsSuccessStatusCode)
@@ -69,12 +69,12 @@ public class AccountController(SignInManager<User> signInManager, IEmailSender<U
                 if (string.IsNullOrEmpty(primary))
                     return BadRequest("Failed to get email from GitHub");
 
-                user!.Email = primary;
+                user.Email = primary;
             }
         }
 
         // step 4 - find or create user and sign in
-        var existingUser = await signInManager.UserManager.FindByEmailAsync(user!.Email);
+        var existingUser = await signInManager.UserManager.FindByEmailAsync(user.Email);
 
         if (existingUser == null)
         {
